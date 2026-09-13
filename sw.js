@@ -1,4 +1,4 @@
-const CACHE_NAME = 'engrank-v4';
+const CACHE_NAME = 'engrank-v5';
 const APP_SHELL = [
   './',
   './index.html',
