@@ -78,8 +78,10 @@ function allVocabForGrade(grade) {
   return list;
 }
 function pickDistractors(pool, excludeValue, n) {
-  const candidates = shuffleArr(pool.filter(v => v !== excludeValue));
-  return candidates.slice(0, n);
+  // 여러 이야기에서 같은 단어/뜻이 재사용될 수 있으므로, 중복 제거 후 뽑는다
+  // (그렇지 않으면 같은 값이 오답 보기에 두 번 나올 수 있음).
+  const unique = [...new Set(pool)].filter(v => v !== excludeValue);
+  return shuffleArr(unique).slice(0, n);
 }
 function canType(grade) {
   const mode = ENG_GRADE_TYPING[grade];
